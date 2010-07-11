@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xunit>
+  <assemblies>
+    <assembly filename="Tests\Rho.Robot.Core.Tests\bin\Debug\Rho.Robot.Core.Tests.dll" shadow-copy="true" />
+    <assembly filename="Tests\Rho.Robot.Core.Tests\bin\Debug\Rho.Robot.Core.Full.Tests.dll" shadow-copy="true" />
+  </assemblies>
+</xunit>
