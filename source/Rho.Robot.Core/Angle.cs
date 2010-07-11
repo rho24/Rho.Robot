@@ -45,7 +45,8 @@ namespace Rho.Robot.Core
         private Angle(double radians)
         {
             _RawRadians = radians;
-            _Radians = (((((radians % TWO_PI) + TWO_PI) % TWO_PI) + Math.PI) % TWO_PI) - Math.PI;
+            //_Radians = (((((radians % TWO_PI) + TWO_PI) % TWO_PI) + Math.PI) % TWO_PI) - Math.PI;
+            _Radians = (((((radians % TWO_PI) - TWO_PI) % TWO_PI) - Math.PI) % TWO_PI) + Math.PI;
         }
 
         public static Angle FromRadians(double radians)
