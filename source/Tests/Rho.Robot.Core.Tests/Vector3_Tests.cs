@@ -33,7 +33,7 @@ namespace Rho.Robot.Core.Tests
 
             var root1Over3 = MathHelper.Sqrt(1.0 / 3);
 
-            Assert.Equal(new Vector3 { X = root1Over3, Y = root1Over3, Z = root1Over3 }, v.Normal());
+            Assert.Equal(new Vector3 { X = root1Over3, Y = root1Over3, Z = root1Over3 }, v.Normal);
         }
 
         [Fact]

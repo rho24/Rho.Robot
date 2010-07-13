@@ -49,6 +49,11 @@ namespace Rho.Robot.Core
             _Radians = (((((radians % TWO_PI) - TWO_PI) % TWO_PI) - Math.PI) % TWO_PI) + Math.PI;
         }
 
+        public override string ToString()
+        {
+            return RawDegrees.ToString() + " Degrees";
+        }
+
         public static Angle FromRadians(double radians)
         {
             return new Angle(radians);

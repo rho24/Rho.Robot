@@ -39,12 +39,12 @@ namespace Rho.Robot.Core
         //    Z = normal.Z * sinAngle;
         //}
 
-        public static Quaternion FromAxisAngle(Vector3 v, Angle a)
+        public static Quaternion FromAxisAngle(AxisAngle a)
         {
-            var halfAngle = a.Radians / 2;
+            var halfAngle = a.Angle.RawRadians / 2;
             var sinAngle = MathHelper.Sin(halfAngle);
 
-            var normal = v.Normal();
+            var normal = a.Axis.Normal;
 
             return new Quaternion(
                 MathHelper.Cos(halfAngle),
@@ -52,11 +52,6 @@ namespace Rho.Robot.Core
                 normal.Y * sinAngle,
                 normal.Z * sinAngle);
         }
-
-        //public static Quaternion FromRotation3D(Rotation3D r)
-        //{
-        //    return Quaternion.FromAxisAngle(new Vector3 { X = 1, Y = 0, Z = 0 }, r.X) * Quaternion.FromAxisAngle(new Vector3 { X = 0, Y = 1, Z = 0 }, r.Y) * Quaternion.FromAxisAngle(new Vector3 { X = 0, Y = 0, Z = 1 }, r.Z);
-        //}
 
         public Quaternion Normalize()
         {
@@ -108,16 +103,26 @@ namespace Rho.Robot.Core
             return new Vector3 { X = resQuat.X, Y = resQuat.Y, Z = resQuat.Z };
         }
 
-        //public Rotation3D ToAxisAngle()
-        //{
-        //    var a = new Rotation3D { X = Angle.FromRadians(this.X), Y = Angle.FromRadians(this.Y), Z = Angle.FromRadians(this.Z) };
-        //    if (a.Length() == 0)
-        //        return a;
+        public AxisAngle ToAxisAngle()
+        {
+            var qNorm = this.Normalize();
 
-        //    var scale = 2 * MathEx.Acos(W) / a.Length();
+            if (qNorm.W == 1)
+            {
+                return new AxisAngle { Axis = Vector3.Zero, Angle = Angle.Zero };
+            }
 
-        //    return a * scale;
-        //}
+            var a = Angle.FromRadians(2 * MathHelper.Acos(qNorm.W));
+
+            var v = new Vector3
+            {
+                X = qNorm.X,
+                Y = qNorm.Y,
+                Z = qNorm.Z
+            }.Normal;
+
+            return new AxisAngle { Axis = v, Angle = a };
+        }
 
     }
 }

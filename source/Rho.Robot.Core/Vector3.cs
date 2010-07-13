@@ -16,18 +16,41 @@ namespace Rho.Robot.Core
             }
         }
 
-        public Vector3 Normal()
+        public Vector3 Normal
         {
-            var length = this.Length;
-            if (length == 0.0)
-                return new Vector3();
+            get
+            {
+                var length = this.Length;
+                if (length == 0.0)
+                    return new Vector3();
 
-            return this / length;
+                return this / length;
+            }
         }
 
         public override string ToString()
         {
             return X + "," + Y + "," + Z;
+        }
+
+        public static Vector3 UnitX
+        {
+            get { return new Vector3 { X = 1 }; }
+        }
+
+        public static Vector3 UnitY
+        {
+            get { return new Vector3 { Y = 1 }; }
+        }
+
+        public static Vector3 UnitZ
+        {
+            get { return new Vector3 { Z = 1 }; }
+        }
+
+        public static Vector3 Zero
+        {
+            get { return new Vector3(); }
         }
 
         public static Vector3 operator +(Vector3 v1, Vector3 v2)

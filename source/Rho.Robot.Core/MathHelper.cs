@@ -8,6 +8,23 @@ namespace Rho.Robot.Core
 {
     public class MathHelper
     {
+        public static double Pow(double x, double y)
+        {
+#if MICRO
+            return MathEx.Pow(x, y);
+#else
+            return Math.Pow(x,y);
+#endif
+        }
+
+        public static double Sqrt(double d)
+        {
+#if MICRO
+            return MathEx.Sqrt(d);
+#else
+            return Math.Pow(d,0.5);
+#endif
+        }
 
         public static double Sin(double d)
         {
@@ -27,21 +44,12 @@ namespace Rho.Robot.Core
 #endif
         }
 
-        public static double Pow(double x, double y)
+        public static double Acos(double d)
         {
 #if MICRO
-            return MathEx.Pow(x, y);
+            return MathEx.Acos(d);
 #else
-            return Math.Pow(x,y);
-#endif
-        }
-
-        public static double Sqrt(double d)
-        {
-#if MICRO
-            return MathEx.Sqrt(d);
-#else
-            return Math.Pow(d,0.5);
+            return Math.Acos(d);
 #endif
         }
     }
