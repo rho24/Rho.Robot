@@ -40,6 +40,11 @@ namespace Rho.Robot.Core
             return X + "," + Y + "," + Z;
         }
 
+        public override int GetHashCode()
+        {
+            return X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
+        }
+
         public override bool Equals(object obj)
         {
             if (obj is Vector3)
