@@ -57,7 +57,7 @@ namespace Rho.Robot.Core
         {
             var mag2 = Math.Pow(W, 2) + Math.Pow(X, 2) + Math.Pow(Y, 2) + Math.Pow(Z, 2);
 
-            if (mag2 != 0.0 && mag2 != 1.0)
+            if (MathHelper.SigFig(mag2, 6) != 0.0 && MathHelper.SigFig(mag2, 6) != 1.0)
             {
                 var mag = Math.Pow(mag2, 0.5);
 

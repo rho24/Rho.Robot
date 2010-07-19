@@ -46,6 +46,7 @@
     <Compile Include="Angle_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quaternion_Tests.cs" />
+    <Compile Include="TestExtensions.cs" />
     <Compile Include="Vector3_Tests.cs" />
   </ItemGroup>
   <ItemGroup>

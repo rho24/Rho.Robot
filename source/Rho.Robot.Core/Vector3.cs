@@ -8,6 +8,13 @@ namespace Rho.Robot.Core
         public double Y;
         public double Z;
 
+        public Vector3(double x, double y, double z)
+        {
+            X = x;
+            Y = y;
+            Z = z;
+        }
+
         public double Length
         {
             get
@@ -31,6 +38,17 @@ namespace Rho.Robot.Core
         public override string ToString()
         {
             return X + "," + Y + "," + Z;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Vector3)
+            {
+                var v = (Vector3)obj;
+                return this.X.Equals(v.X) && this.Y.Equals(v.Y) && this.Z.Equals(v.Z);
+            }
+
+            return base.Equals(obj);
         }
 
         public static Vector3 UnitX

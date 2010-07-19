@@ -26,7 +26,11 @@ namespace Rho.Robot.Core.Tests
             Assert.Equal(5.0, v.Length);
         }
 
+#if MICRO
+        [Fact(Skip = "Contains hardware maths.")]
+#else
         [Fact]
+#endif
         public void Normal_Is_Correct()
         {
             var v = new Vector3 { X = 5, Y = 5, Z = 5 };

@@ -6,7 +6,7 @@ using GHIElectronics.NETMF.System;
 
 namespace Rho.Robot.Core
 {
-    public class MathHelper
+    public static class MathHelper
     {
         public static double Pow(double x, double y)
         {
@@ -51,6 +51,11 @@ namespace Rho.Robot.Core
 #else
             return Math.Acos(d);
 #endif
+        }
+
+        public static double SigFig(double d, int fig)
+        {
+            return Math.Round(d * MathHelper.Pow(10, fig)) / MathHelper.Pow(10, fig);
         }
     }
 }
